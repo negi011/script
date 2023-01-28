@@ -5,13 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My first html file</title>
-    <script>
-        console.log("hey , this is a first script")
-        console.log('this is a next statement')
-        console.log('1'); console.log('2')
-    </script>
-</head>
-<body>
-   <p> this is a html para</p> 
+<script>
+    function additemtolist()   {
+        const inputvalue = document.getElementById("todoitem").value;
+        if(!inputvalue.trim()){
+            alert("add some text")
+        }else{
+            //alert(inputvalue);
+            const newlistitem = document.createElement('li');
+            const textnode = document.createTextNode(inputvalue);
+            newlistitem.appendChild(textnode);
+            console.log(newlistitem, "list item" )
+            const closeButton = document.createElement('span');
+            const closeText = document.createTextNode('x');
+            closeButton.appendChild(closeText);
+            newlistitem.appendChild(closeButton);
+            closeButton.addEventListener('click', function(){
+                this.parentElement.remove();
+            })
+
+            const oderedlist= document.getElementById('todolist');
+            oderedlist.appendChild(newlistitem);
+        }
+    }
+
+    
+</script>
+
 </body>
 </html>
